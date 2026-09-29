@@ -69,8 +69,6 @@ p{max-width:64ch}
 .btn-fill:hover{background:var(--clay-lt);transform:translateY(-2px)}
 .btn-line{border:1px solid rgba(243,237,227,.28);color:var(--chalk)}
 .btn-line:hover{border-color:var(--sand);color:var(--sand);transform:translateY(-2px)}
-.btn-gold{background:var(--sand);color:#231A0B}
-.btn-gold:hover{background:var(--sand-lt);transform:translateY(-2px)}
 .btn-block{width:100%}
 
 .sect{padding:clamp(56px,8vw,96px) 0;position:relative}
@@ -212,16 +210,19 @@ blockquote cite{display:block;margin-top:16px;font-style:normal;font-size:.84rem
 .facts li{list-style:none;font-size:.8rem;font-weight:500;color:#C4B7AB;
   border:1px solid var(--rule);border-radius:999px;padding:6px 14px}
 
-/* ---------- coach tabs ---------- */
+/* ---------- coaching: tennis + padel ---------- */
 .coach{background:var(--night-2);border-block:1px solid var(--rule)}
-.tabs{display:flex;gap:6px;padding:5px;background:var(--night);
-  border:1px solid var(--rule);border-radius:var(--r);width:fit-content;max-width:100%;margin-bottom:34px}
-.tabs button{
-  font-weight:600;font-size:.92rem;padding:12px 30px;border-radius:3px;
-  color:var(--mute);transition:background .25s,color .25s;min-height:46px;
+.sport + .sport{
+  margin-top:clamp(48px,7vw,78px);padding-top:clamp(48px,7vw,78px);
+  border-top:1px solid var(--rule);position:relative;
 }
-.tabs button[aria-selected="true"]{background:var(--clay);color:#FFF3EC}
-.panel[hidden]{display:none}
+.sport + .sport::before{
+  content:"";position:absolute;top:-1px;left:0;width:min(180px,42%);height:1px;
+  background:linear-gradient(to right,var(--sand),transparent);
+}
+.sport#tennis .tag{color:var(--clay);border-color:rgba(196,81,46,.36)}
+.sport#padel .tag{color:var(--sand);border-color:rgba(224,178,92,.34)}
+.sport#padel .svc-item h3::before{background:var(--sand)}
 .svc{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
 @media(min-width:760px){.svc{grid-template-columns:repeat(2,1fr)}}
 .svc-item{background:var(--night-2);padding:26px 24px;transition:background .3s}
@@ -313,36 +314,6 @@ blockquote cite{display:block;margin-top:16px;font-style:normal;font-size:.84rem
   font-size:.72rem;font-weight:700;letter-spacing:.08em;padding:6px 14px;border-bottom-left-radius:var(--r)}
 .price-note{margin-top:22px;font-size:.87rem;color:var(--mute);max-width:60ch}
 
-/* ---------- real estate ---------- */
-.estate{
-  --acc:var(--sand);
-  background:
-    repeating-linear-gradient(0deg,rgba(224,178,92,.055) 0 1px,transparent 1px 46px),
-    repeating-linear-gradient(90deg,rgba(224,178,92,.055) 0 1px,transparent 1px 46px),
-    #0B1016;
-  border-top:1px solid rgba(224,178,92,.24);
-  position:relative;overflow:hidden;
-}
-.estate .tag{color:var(--sand);border-color:rgba(224,178,92,.3)}
-.estate h2 .g{color:var(--sand)}
-.estate-grid{display:grid;gap:clamp(30px,6vw,56px)}
-@media(min-width:900px){.estate-grid{grid-template-columns:1fr 1fr;align-items:start}}
-.estate-list{display:grid;gap:1px;background:rgba(224,178,92,.22);
-  border:1px solid rgba(224,178,92,.22);border-radius:var(--r);overflow:hidden}
-.estate-list li{list-style:none;background:#0B1016;padding:22px 22px}
-.estate-list h3{color:#F2E6D2;margin-bottom:6px;display:flex;align-items:baseline;gap:10px}
-.estate-list h3::before{content:"";width:9px;height:9px;flex:none;background:var(--sand);border-radius:2px;transform:translateY(-1px)}
-.estate-list p{font-size:.9rem;color:#9FA9B4;line-height:1.55}
-.estate-card{
-  border:1px solid rgba(224,178,92,.3);border-radius:var(--r);padding:clamp(24px,5vw,34px);
-  background:linear-gradient(165deg,rgba(224,178,92,.11),rgba(224,178,92,.02));
-}
-.estate-card .big{font-family:'Anton';font-size:clamp(2.2rem,7vw,3rem);color:var(--sand);
-  text-transform:uppercase;line-height:.94;margin-bottom:14px}
-.estate-card p{font-size:.95rem;color:#C6CCD4}
-.estate-card .btn{margin-top:24px}
-.skyline{display:block;width:100%;height:auto;margin-top:clamp(44px,8vw,74px);opacity:.5}
-
 /* ---------- contact ---------- */
 .contact{border-top:1px solid var(--rule);background:var(--night-2)}
 .contact-grid{display:grid;gap:clamp(30px,6vw,50px)}
@@ -370,7 +341,6 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
 }
 .sticky.show{transform:translateY(0)}
 .sticky .btn{flex:1;padding:13px 16px;min-height:50px;font-size:.92rem}
-.sticky .btn.alt{flex:none;max-width:132px}
 @media(min-width:960px){.sticky{display:none}}
 
 /* ---------- reveal ---------- */
@@ -395,11 +365,11 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
     <span>Cornejo Tennis Academy<i>Tennis &amp; padel · Dubai</i></span>
   </a>
   <div class="nav-links">
-    <a href="#coach">Coaching</a>
+    <a href="#tennis">Tennis</a>
+    <a href="#padel">Padel</a>
     <a href="#road">The road</a>
     <a href="#proof">Proof</a>
     <a href="#prices">Prices</a>
-    <a href="#estate">Dubai real estate</a>
   </div>
   <a class="btn btn-fill" href="https://wa.me/971552617716?text=Hi%20Diego%20%E2%80%94%20I%27d%20like%20to%20book%20a%20tennis%20or%20padel%20session" target="_blank" rel="noopener">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.67.44 3.3 1.27 4.74L2.5 21.5l4.9-1.28a9.46 9.46 0 0 0 4.64 1.2h.01c5.23 0 9.49-4.26 9.49-9.5s-4.26-9.5-9.5-9.42zm5.63 15.13a7.87 7.87 0 0 1-5.63 2.34h-.01a7.86 7.86 0 0 1-4.02-1.1l-.29-.17-2.97.77.79-2.9-.19-.3a7.83 7.83 0 0 1-1.2-4.2c0-4.34 3.53-7.87 7.88-7.87a7.82 7.82 0 0 1 5.62 2.34 7.82 7.82 0 0 1 2.31 5.63c0 4.35-3.53 7.87-7.87 7.87z"/></svg>
@@ -479,30 +449,35 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
 
 <section class="sect coach" id="coach">
   <div class="wrap">
-    <div class="sect-head rv">
-      <span class="tag">On court</span>
-      <h2 class="disp">What I coach</h2>
-      <p class="lead">One-to-one, groups, juniors, or a full academy programme. Pick your racket.</p>
+
+    <div class="sport" id="tennis">
+      <div class="sect-head rv">
+        <span class="tag">On court</span>
+        <h2 class="disp">Tennis</h2>
+        <p class="lead">One-to-one, groups, juniors or a full academy programme — built for the level you're at and the level you're chasing.</p>
+      </div>
+      <div class="svc rv">
+        <div class="svc-item"><h3>Private lessons</h3><p>Technique, tactics and match play, built around your level and the shots you actually use on court.</p><span>All ages · all levels</span></div>
+        <div class="svc-item"><h3>Juniors &amp; kids</h3><p>From a first rally to a tournament draw. Footwork, coordination and habits that hold up under pressure.</p><span>Ages 5 and up</span></div>
+        <div class="svc-item"><h3>High performance</h3><p>Periodised training for players chasing rankings: fitness, video work, match analysis and competition planning.</p><span>Competitive players</span></div>
+        <div class="svc-item"><h3>Adults &amp; beginners</h3><p>Start clean, or fix what years of weekend play has built. Fitness included, ego optional.</p><span>No experience needed</span></div>
+      </div>
     </div>
 
-    <div class="tabs" role="tablist" aria-label="Choose a sport">
-      <button role="tab" id="tab-tennis" aria-controls="panel-tennis" aria-selected="true">Tennis</button>
-      <button role="tab" id="tab-padel" aria-controls="panel-padel" aria-selected="false">Padel</button>
+    <div class="sport" id="padel">
+      <div class="sect-head rv">
+        <span class="tag">Off the glass</span>
+        <h2 class="disp">Padel</h2>
+        <p class="lead">Faster, tighter, played off the glass. Positioning, patterns and the shots that decide the point — taught the same way everything else is taught here.</p>
+      </div>
+      <div class="svc rv">
+        <div class="svc-item"><h3>Private padel coaching</h3><p>One-to-one sessions covering the bandeja, the vibora, positioning and the decisions that win points.</p><span>All levels</span></div>
+        <div class="svc-item"><h3>Pairs &amp; match tactics</h3><p>Bring your regular partner. We work the walls, the formations and the transitions you keep missing.</p><span>Two players</span></div>
+        <div class="svc-item"><h3>Academy &amp; group sessions</h3><p>Structured programmes for clubs, hotels and academies — curriculum, coaching team and player pathways.</p><span>Venues &amp; clubs</span></div>
+        <div class="svc-item"><h3>Cardio padel &amp; fitness</h3><p>High-tempo sessions that blend conditioning with racket work, built from 25 years of fitness coaching.</p><span>Fitness included</span></div>
+      </div>
     </div>
 
-    <div class="panel svc" role="tabpanel" id="panel-tennis" aria-labelledby="tab-tennis">
-      <div class="svc-item"><h3>Private lessons</h3><p>Technique, tactics and match play, built around your level and the shots you actually use on court.</p><span>All ages · all levels</span></div>
-      <div class="svc-item"><h3>Juniors &amp; kids</h3><p>From a first rally to a tournament draw. Footwork, coordination and habits that hold up under pressure.</p><span>Ages 5 and up</span></div>
-      <div class="svc-item"><h3>High performance</h3><p>Periodised training for players chasing rankings: fitness, video work, match analysis and competition planning.</p><span>Competitive players</span></div>
-      <div class="svc-item"><h3>Adults &amp; beginners</h3><p>Start clean, or fix what years of weekend play has built. Fitness included, ego optional.</p><span>No experience needed</span></div>
-    </div>
-
-    <div class="panel svc" role="tabpanel" id="panel-padel" aria-labelledby="tab-padel" hidden>
-      <div class="svc-item"><h3>Private padel coaching</h3><p>One-to-one sessions covering the bandeja, the vibora, positioning and the decisions that win points.</p><span>All levels</span></div>
-      <div class="svc-item"><h3>Pairs &amp; match tactics</h3><p>Bring your regular partner. We work the walls, the formations and the transitions you keep missing.</p><span>Two players</span></div>
-      <div class="svc-item"><h3>Academy &amp; group sessions</h3><p>Structured programmes for clubs, hotels and academies — curriculum, coaching team and player pathways.</p><span>Venues &amp; clubs</span></div>
-      <div class="svc-item"><h3>Cardio padel &amp; fitness</h3><p>High-tempo sessions that blend conditioning with racket work, built from 25 years of fitness coaching.</p><span>Fitness included</span></div>
-    </div>
   </div>
 </section>
 
@@ -607,47 +582,6 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
   </div>
 </section>
 
-<section class="sect estate" id="estate">
-  <div class="wrap">
-    <div class="sect-head rv">
-      <span class="tag">Between sessions</span>
-      <h2 class="disp">Dubai <span class="g">real estate</span></h2>
-      <p class="lead" style="color:#AFB8C2">Off-plan property in Dubai, handled the same way he coaches — numbers first, pressure never.</p>
-    </div>
-
-    <div class="estate-grid">
-      <div class="rv">
-        <ul class="estate-list">
-          <li><h3>Off-plan launches</h3><p>Pre-launch pricing and unit selection before the release hits the open market.</p></li>
-          <li><h3>Payment plans &amp; handover</h3><p>Post-handover plans, construction milestones and total cost laid out plainly, in writing.</p></li>
-          <li><h3>Yield and resale</h3><p>Rental demand, service charges and exit timing — what the asset does after you buy it.</p></li>
-          <li><h3>Viewing to keys</h3><p>Reservation, SPA, transfer and handover handled end to end, in English or Spanish.</p></li>
-        </ul>
-      </div>
-      <div class="estate-card rv">
-        <div class="big">Buying in Dubai?<br>Ask on the same number.</div>
-        <p>One contact for your serve and your signature. Tell him your budget and the community you're eyeing, and you'll get the numbers back the same day.</p>
-        <a class="btn btn-gold" href="https://wa.me/971552617716?text=Hi%20Diego%20%E2%80%94%20I%27d%20like%20to%20discuss%20off-plan%20property%20in%20Dubai" target="_blank" rel="noopener">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.67.44 3.3 1.27 4.74L2.5 21.5l4.9-1.28a9.46 9.46 0 0 0 4.64 1.2h.01c5.23 0 9.49-4.26 9.49-9.5s-4.26-9.5-9.5-9.42zm5.63 15.13a7.87 7.87 0 0 1-5.63 2.34h-.01a7.86 7.86 0 0 1-4.02-1.1l-.29-.17-2.97.77.79-2.9-.19-.3a7.83 7.83 0 0 1-1.2-4.2c0-4.34 3.53-7.87 7.88-7.87a7.82 7.82 0 0 1 5.62 2.34 7.82 7.82 0 0 1 2.31 5.63c0 4.35-3.53 7.87-7.87 7.87z"/></svg>
-          Message about property
-        </a>
-      </div>
-    </div>
-
-    <svg class="skyline" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
-      <path fill="#E0B25C" d="M0 200V168h52v-22h34v-38h30v38h30v22h58v-34h34v-40h28l14-52 14 52h28v40h30v34h62v-26h40v-46h30v-56h26v-46l18-58 18 58v46h26v56h30v46h40v26h58v-30h36v-48h30v-40h28v40h30v48h38v30h58v-24h40v-40h30v40h36v24h64v32H0z"/>
-      <g fill="#0B1016">
-        <rect x="14" y="176" width="7" height="9"/><rect x="40" y="176" width="7" height="9"/>
-        <rect x="66" y="150" width="7" height="9"/><rect x="96" y="150" width="7" height="9"/>
-        <rect x="240" y="146" width="7" height="9"/><rect x="270" y="146" width="7" height="9"/>
-        <rect x="470" y="128" width="7" height="9"/><rect x="500" y="128" width="7" height="9"/>
-        <rect x="700" y="150" width="7" height="9"/><rect x="740" y="150" width="7" height="9"/>
-        <rect x="900" y="158" width="7" height="9"/><rect x="960" y="158" width="7" height="9"/>
-      </g>
-    </svg>
-  </div>
-</section>
-
 <section class="sect contact" id="contact">
   <div class="wrap contact-grid">
     <div class="rv">
@@ -657,7 +591,7 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
       <div class="facts">
         <li>Based in Dubai, UAE</li>
         <li>Spanish &amp; English</li>
-        <li>Tennis · Padel · Off-plan property</li>
+        <li>Private, pairs &amp; academy coaching</li>
       </div>
     </div>
 
@@ -695,7 +629,6 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.67.44 3.3 1.27 4.74L2.5 21.5l4.9-1.28a9.46 9.46 0 0 0 4.64 1.2h.01c5.23 0 9.49-4.26 9.49-9.5s-4.26-9.5-9.5-9.42zm5.63 15.13a7.87 7.87 0 0 1-5.63 2.34h-.01a7.86 7.86 0 0 1-4.02-1.1l-.29-.17-2.97.77.79-2.9-.19-.3a7.83 7.83 0 0 1-1.2-4.2c0-4.34 3.53-7.87 7.88-7.87a7.82 7.82 0 0 1 5.62 2.34 7.82 7.82 0 0 1 2.31 5.63c0 4.35-3.53 7.87-7.87 7.87z"/></svg>
     Book a lesson
   </a>
-  <a class="btn btn-line alt" href="#estate">Property</a>
 </div>
 
 <script type="application/ld+json">
@@ -735,18 +668,6 @@ footer{border-top:1px solid var(--rule);padding:26px 0 calc(96px + env(safe-area
 
   addEventListener('load', function(){ document.body.classList.add('loaded'); });
   setTimeout(function(){ document.body.classList.add('loaded'); }, 900);
-
-  /* tabs */
-  var tabs = document.querySelectorAll('[role="tab"]');
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){
-      tabs.forEach(function(o){
-        var sel = o === t;
-        o.setAttribute('aria-selected', sel ? 'true' : 'false');
-        document.getElementById(o.getAttribute('aria-controls')).hidden = !sel;
-      });
-    });
-  });
 
   /* counters */
   function countUp(el){
